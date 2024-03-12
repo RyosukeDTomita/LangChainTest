@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: lcel:latest
+    container_name: lcel-container
+    volumes:
+      - ./:/usr/local/app
+    # NOTE: tokenを空にするとVSCodeのJupyterのExtensionからkernel指定時にxsrfエラーが出る。raise HTTPError(403, "'_xsrf' argument missing from POST"
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root  --NotebookApp.password=''
+    ports:
+      - "8888:8888" # localport:dockerport
+
+
+
