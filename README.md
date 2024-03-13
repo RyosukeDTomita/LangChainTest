@@ -1,4 +1,4 @@
-# Setting up a Jupyter Notebook using a Docker container to use Lang Chain and access it through VS Code extensions.
+# Setting up a Jupyter Notebook using a Docker container to use Lang Chain and access it through VS Code Jupyter extensions.
 
 ![un license](https://img.shields.io/github/license/RyosukeDTomita/LangChainTest)
 
