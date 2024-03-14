@@ -10,6 +10,7 @@
 - [PREPARING](#preparing)
 - [HOW TO USE](#how-to-use)
 - [ERROR LOG](#error-log)
+- [REFERENCE](#reference)
 
 ---
 
@@ -51,6 +52,19 @@ cat <<EOF >> .env
 OPENAI_API_KEY="hogehoge"
 EOF
 ```
+
+<details><summary>Azure OpenAIを使う場合</summary><div>
+
+```shell
+cat <<EOF >> .env
+OPENAI_API_VERSION=2023-12-01-preview
+AZURE_OPENAI_ENDPOINT=https://example.com
+AZURE_OPENAI_API_KEY=hogehoge
+EOF
+```
+
+</div></details>
+
 2. run Docker container
 
 ```shell
@@ -74,3 +88,11 @@ lcel-container  | [I 2024-03-13 04:54:57.732 ServerApp]     http://127.0.0.1:888
 #command: jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root  --NotebookApp.password='' --NotebookApp.token=''
 command: jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root  --NotebookApp.password=''
 ```
+
+### Azure OpenAI 使用時に BadRequestError: Error code: 400 OperationNotSupported The completion operation does not work が出る
+
+- [model の種類](https://learn.microsoft.com/ja-jp/azure/ai-services/openai/concepts/models#gpt-35-models)を見ると，gpt-35-turbo は completion をサポートしていないので gpt-35-turbo-instruct に変更する。これは 2024/03/14 時点ではアメリカリージョンでしか使えない。
+
+---
+
+## REFERENCE
